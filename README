@@ -1,6 +1,0 @@
-Based on https://github.com/dhall-lang/vscode-language-dhall.
-
-0. Install *Dhall Language Support* VSCode extension.
-1. Install *TextMate Languages* VSCode extension.
-2. Locate the file `dhall.tmLanguage.json` and open it in VSCode.
-3. `Ctrl`+`Shift`+`P`, choose *Convert to tmLanguage PLIST file*.
