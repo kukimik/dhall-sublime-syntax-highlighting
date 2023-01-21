@@ -1,8 +1,12 @@
-Syntax highlighting for the [Dhall](https://dhall-lang.org/) configuration language. 
+# Dhall Syntax Highlighting
+
+Syntax highlighting for the [Dhall](https://dhall-lang.org/) configuration language.
 
 Based on the [VS Code Dhall syntax higlighting](https://github.com/dhall-lang/vscode-language-dhall) package (which in turn was heavily influenced by the now non-existant [Sublime Dhall](https://github.com/SQbQxeKd3JHD8/SublimeDhall) package).
 
-This repository is just for the conveniance of Sublime Text users, so that they can install Dhall syntax higlighting using [Package Control](https://packagecontrol.io/). The real development should take place in https://github.com/dhall-lang/vscode-language-dhall.
+This repository is just for the conveniance of [Sublime Text](https://www.sublimetext.com/) users, so that they can install Dhall syntax higlighting using [Package Control](https://packagecontrol.io/). The real development should take place in https://github.com/dhall-lang/vscode-language-dhall.
+
+Note that the syntax definition is a `.tmLanguage` Textmate language grammar file. We do not provide a `.sublime-syntax` file (yet?).
 
 ## Licensing
 
