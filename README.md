@@ -10,7 +10,7 @@ Note that the syntax definition is a Textmate language grammar file (a `.tmLangu
 
 ## Licensing
 
-The original VS Code package is MIT-licensed. Any modifications to the original code are also MIT-licensed. See [LICENSE](https://github.com/kukimik/dhall-sublime-syntax/blob/master/LICENSE).
+The original VS Code package is MIT-licensed. Any modifications to the original code are also MIT-licensed. See [LICENSE](https://github.com/kukimik/dhall-sublime-syntax-highlighting/blob/master/LICENSE).
 
 ## Converting the VS Code syntax highlighting definition
 
@@ -26,7 +26,7 @@ To perform the conversion manually (using VS Code):
 
 ```
     <key>comment</key>
-    <string>Syntax highlighting for Dhall. MIT-licensed, see: https://github.com/kukimik/dhall-sublime-syntax/blob/master/LICENSE.</string>
+    <string>Syntax highlighting for Dhall. MIT-licensed, see: https://github.com/kukimik/dhall-sublime-syntax-highlighting/blob/master/LICENSE.</string>
     <key>fileTypes</key>
     <array>
       <string>dhall</string>
