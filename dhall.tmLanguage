@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
   <dict>
+    <key>comment</key>
+    <string>Syntax definition for Dhall. MIT-licensed, see: https://github.com/kukimik/dhall-sublime-syntax/blob/master/LICENSE.</string>
+    <key>fileTypes</key>
+    <array>
+      <string>dhall</string>
+    </array>
     <key>patterns</key>
     <array>
       <dict>
