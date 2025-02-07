@@ -221,14 +221,22 @@ contexts:
 
   builtins:
     - match:
-        "\\b(?:Natural/(?:fold|build|isZero|even|odd|toInteger|show|toDouble|\
-         show)|Double/show|List/(?:build|fold|length|head|last|indexed|\
-         reverse)|Optional/(?:fold|build)|Integer/(?:show|toDouble))\\b"
+        "\\b(?:Natural/(?:fold|build|isZero|even|odd|toInteger|show|toDouble|subtract)|\
+         Double/show|\
+         List/(?:build|fold|length|head|last|indexed|reverse)|\
+         Optional/(?:fold|build)|\
+         Integer/(?:show|toDouble|negate|clamp)|\
+         Text/(?:show|replace)|\
+         Date/show|\
+         Time/show|\
+         TimeZone/show)\\b"
       scope: support.function.dhall
-    - match: '\b(?:Bool|Optional|Natural|Integer|Double|Text|List|Type|Kind)\b'
+    - match: '\b(?:Bool|Optional|Natural|Integer|Double|Text|List|Date|Time|TimeZone|Bytes|Type|Kind|Sort)\b'
       scope: storage.type.dhall
-    - match: '\b(?:True|False)\b'
+    - match: '\b(?:True|False|None|Some|Infinity|NaN)\b'
       scope: constant.language.dhall
+    - match: '\b(?:Infinity|NaN)\b'
+      scope: constant.numeric.dhall
 
   primitive:
     - include: primitive-double
