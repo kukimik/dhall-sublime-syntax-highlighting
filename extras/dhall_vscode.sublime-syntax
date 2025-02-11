@@ -1,7 +1,7 @@
 %YAML 1.2
 ---
 # Automatically converted from https://github.com/dhall-lang/vscode-language-dhall.
-name: Dhall
+name: Dhall (VSCode plugin)
 file_extensions:
   - dhall
 scope: source.dhall
