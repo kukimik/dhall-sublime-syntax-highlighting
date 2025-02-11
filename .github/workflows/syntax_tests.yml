@@ -1,0 +1,34 @@
+name: Syntax Tests
+
+on:
+  push:
+    paths:
+      - '**.sublime-syntax'
+      - '**/syntax_test*'
+      - '**.tmPreferences'
+  pull_request:
+    paths:
+      - '**.sublime-syntax'
+      - '**/syntax_test*'
+      - '**.tmPreferences'
+
+jobs:
+  syntax_tests:
+    name: Syntax Tests (${{ matrix.build }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      package_name: Dhall
+    strategy:
+      matrix:
+        include:
+          - build: latest
+          - build: stable
+          - build: 3210
+    steps:
+      - uses: actions/checkout@v4
+      - uses: SublimeText/syntax-test-action@v2
+        with:
+          build: ${{ matrix.build }}
+          package_name: ${{ env.package_name }}
+

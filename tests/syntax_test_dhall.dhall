@@ -1,0 +1,378 @@
+-- SYNTAX TEST "Packages/Dhall/dhall.sublime-syntax"
+{- COMMENTS -}
+
+    -- foo
+--  ^^^^^^ comment.line.double-dash.dhall
+--  ^^ punctuation.definition.comment.begin.dhall
+
+    {- bar -}
+--  ^^^^^^^^^ comment.block.brace-dash.dhall
+--  ^^ punctuation.definition.comment.begin.dhall
+--         ^^ punctuation.definition.comment.end.dhall
+
+    {- lorem {- ipsum -} dolor -}
+--  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.block.brace-dash.dhall
+--  ^^ punctuation.definition.comment.begin.dhall
+--           ^^^^^^^^^^^ comment.block.brace-dash.dhall
+--           ^^ punctuation.definition.comment.begin.dhall
+--                    ^^ punctuation.definition.comment.end.dhall
+--                             ^^ punctuation.definition.comment.end.dhall
+    -- consectetur {- adipisicing
+--  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.line.double-dash.dhall
+--  ^^ punctuation.definition.comment.begin.dhall
+
+    {- sit -- amet -}
+--  ^^^^^^^^^^^^^^^^^ comment.block.brace-dash.dhall
+--  ^^ punctuation.definition.comment.begin.dhall
+--                 ^^ punctuation.definition.comment.end.dhall
+
+
+{- DEFINITIONS -}
+
+    let replicateUnicode : Natural → ∀(a : Type) → a → List a
+--  ^^^ keyword.other.let.dhall
+--      ^^^^^^^^^^^^^^^^ entity.name.function.dhall support.function.dhall
+--                       ^ keyword.other.colon.dhall
+--                         ^^^^^^^ storage.type.dhall
+--                                 ^ keyword.operator.arrow.dhall
+--                                   ^ storage.modifier.universal-quantifier.dhall
+--                                    ^^^^^^^^^^ meta.parens.dhall
+--                                    ^ punctuation.section.parens.begin.dhall
+--                                     ^ variable.parameter.lambda.dhall
+--                                       ^ keyword.other.colon.dhall
+--                                         ^^^^ storage.type.dhall
+--                                             ^ punctuation.section.parens.end.dhall
+--                                               ^ keyword.operator.arrow.dhall
+--                                                 ^ meta.label.dhall
+--                                                   ^ keyword.operator.arrow.dhall
+--                                                     ^^^^ storage.type.dhall
+--                                                          ^ meta.label.dhall
+        =   λ(n : Natural) → λ(a : Type) → λ(x : a)
+--      ^ keyword.operator.assignment.dhall
+--          ^ support.function.lambda.dhall
+--           ^^^^^^^^^^^^^ meta.parens.dhall
+--           ^ punctuation.section.parens.begin.dhall
+--            ^ variable.parameter.lambda.dhall
+--              ^ keyword.other.colon.dhall
+--                ^^^^^^^ storage.type.dhall
+--                       ^ punctuation.section.parens.end.dhall
+--                         ^ keyword.operator.arrow.dhall
+--                           ^ support.function.lambda.dhall
+--                            ^^^^^^^^^^ meta.parens.dhall
+--                            ^ punctuation.section.parens.begin.dhall
+--                             ^ variable.parameter.lambda.dhall
+--                               ^ keyword.other.colon.dhall
+--                                 ^^^^ storage.type.dhall
+--                                     ^ punctuation.section.parens.end.dhall
+--                                       ^ keyword.operator.arrow.dhall
+--                                         ^ support.function.lambda.dhall
+--                                          ^^^^^^^ meta.parens.dhall
+--                                          ^ punctuation.section.parens.begin.dhall
+--                                           ^ variable.parameter.lambda.dhall
+--                                             ^ keyword.other.colon.dhall
+--                                               ^ meta.label.dhall
+--                                                ^ punctuation.section.parens.end.dhall
+        →   List/build a
+--      ^ keyword.operator.arrow.dhall
+--          ^^^^^^^^^^ support.function.dhall
+--                     ^ meta.label.dhall
+            (   λ(list : Type)
+--          ^^^^^^^^^^^^^^^^^^ meta.parens.dhall
+--          ^ punctuation.section.parens.begin.dhall
+--              ^ support.function.lambda.dhall
+--               ^^^^^^^^^^^^^ meta.parens.dhall
+--               ^ punctuation.section.parens.begin.dhall
+--                ^^^^ variable.parameter.lambda.dhall
+--                     ^ keyword.other.colon.dhall
+--                       ^^^^ storage.type.dhall
+--                           ^ punctuation.section.parens.end.dhall
+            →   λ(cons : a → list → list)
+--^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.parens.dhall
+--          ^ keyword.operator.arrow.dhall
+--              ^ support.function.lambda.dhall
+--               ^^^^^^^^^^^^^^^^^^^^^^^^ meta.parens.dhall
+--               ^ punctuation.section.parens.begin.dhall
+--                ^^^^ variable.parameter.lambda.dhall
+--                     ^ keyword.other.colon.dhall
+--                       ^ meta.label.dhall
+--                         ^ keyword.operator.arrow.dhall
+--                           ^^^^ meta.label.dhall
+--                                ^ keyword.operator.arrow.dhall
+--                                  ^^^^ meta.label.dhall
+--                                      ^ punctuation.section.parens.end.dhall
+            →   Natural/fold n list (cons x)
+--^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.parens.dhall
+--          ^ keyword.operator.arrow.dhall
+--              ^^^^^^^^^^^^ support.function.dhall
+--                           ^ meta.label.dhall
+--                             ^^^^ meta.label.dhall
+--                                  ^^^^^^^^ meta.parens.dhall
+--                                  ^ punctuation.section.parens.begin.dhall
+--                                   ^^^^ meta.label.dhall
+--                                        ^ meta.label.dhall
+--                                         ^ punctuation.section.parens.end.dhall
+            )
+--^^^^^^^^^^^ meta.parens.dhall
+--          ^ punctuation.section.parens.end.dhall
+
+
+in  let replicateAscii : Natural -> forall(a : Type) -> a -> List a
+--  ^^^ keyword.other.let.dhall
+--      ^^^^^^^^^^^^^^ entity.name.function.dhall support.function.dhall
+--                     ^ keyword.other.colon.dhall
+--                       ^^^^^^^ storage.type.dhall
+--                               ^^ keyword.operator.arrow.dhall
+--                                  ^^^^^^ storage.modifier.universal-quantifier.dhall
+--                                        ^^^^^^^^^^ meta.parens.dhall
+--                                        ^ punctuation.section.parens.begin.dhall
+--                                         ^ variable.parameter.lambda.dhall
+--                                           ^ keyword.other.colon.dhall
+--                                             ^^^^ storage.type.dhall
+--                                                 ^ punctuation.section.parens.end.dhall
+--                                                   ^^ keyword.operator.arrow.dhall
+--                                                      ^ meta.label.dhall
+--                                                        ^^ keyword.operator.arrow.dhall
+--                                                           ^^^^ storage.type.dhall
+--                                                                ^ meta.label.dhall
+        =   \(n : Natural) -> \(a : Type) -> \(x : a)
+--      ^ keyword.operator.assignment.dhall
+--          ^ support.function.lambda.dhall
+--           ^^^^^^^^^^^^^ meta.parens.dhall
+--           ^ punctuation.section.parens.begin.dhall
+--            ^ variable.parameter.lambda.dhall
+--              ^ keyword.other.colon.dhall
+--                ^^^^^^^ storage.type.dhall
+--                       ^ punctuation.section.parens.end.dhall
+--                         ^^ keyword.operator.arrow.dhall
+--                            ^ support.function.lambda.dhall
+--                             ^^^^^^^^^^ meta.parens.dhall
+--                             ^ punctuation.section.parens.begin.dhall
+--                              ^ variable.parameter.lambda.dhall
+--                                ^ keyword.other.colon.dhall
+--                                  ^^^^ storage.type.dhall
+--                                      ^ punctuation.section.parens.end.dhall
+--                                        ^^ keyword.operator.arrow.dhall
+--                                           ^ support.function.lambda.dhall
+--                                            ^^^^^^^ meta.parens.dhall
+--                                            ^ punctuation.section.parens.begin.dhall
+--                                             ^ variable.parameter.lambda.dhall
+--                                               ^ keyword.other.colon.dhall
+--                                                 ^ meta.label.dhall
+--                                                  ^ punctuation.section.parens.end.dhall
+        ->  List/build a
+--      ^^ keyword.operator.arrow.dhall
+--          ^^^^^^^^^^ support.function.dhall
+--                     ^ meta.label.dhall
+            (   \(list : Type)
+--          ^^^^^^^^^^^^^^^^^^ meta.parens.dhall
+--          ^ punctuation.section.parens.begin.dhall
+--              ^ support.function.lambda.dhall
+--               ^^^^^^^^^^^^^ meta.parens.dhall
+--               ^ punctuation.section.parens.begin.dhall
+--                ^^^^ variable.parameter.lambda.dhall
+--                     ^ keyword.other.colon.dhall
+--                       ^^^^ storage.type.dhall
+--                           ^ punctuation.section.parens.end.dhall
+            ->  \(cons : a -> list -> list)
+--^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.parens.dhall
+--          ^^ keyword.operator.arrow.dhall
+--              ^ support.function.lambda.dhall
+--               ^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.parens.dhall
+--               ^ punctuation.section.parens.begin.dhall
+--                ^^^^ variable.parameter.lambda.dhall
+--                     ^ keyword.other.colon.dhall
+--                       ^ meta.label.dhall
+--                         ^^ keyword.operator.arrow.dhall
+--                            ^^^^ meta.label.dhall
+--                                 ^^ keyword.operator.arrow.dhall
+--                                    ^^^^ meta.label.dhall
+--                                        ^ punctuation.section.parens.end.dhall
+            ->  Natural/fold n list (cons x)
+--^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.parens.dhall
+--          ^^ keyword.operator.arrow.dhall
+--              ^^^^^^^^^^^^ support.function.dhall
+--                           ^ meta.label.dhall
+--                             ^^^^ meta.label.dhall
+--                                  ^^^^^^^^ meta.parens.dhall
+--                                  ^ punctuation.section.parens.begin.dhall
+--                                   ^^^^ meta.label.dhall
+--                                        ^ meta.label.dhall
+--                                         ^ punctuation.section.parens.end.dhall
+            )
+--^^^^^^^^^^^ meta.parens.dhall
+--          ^ punctuation.section.parens.end.dhall
+
+in  let compose
+--  ^^^ keyword.other.let.dhall
+--      ^^^^^^^ entity.name.function.dhall support.function.dhall
+        : forall(a : Type) -> forall(b : Type) -> forall(c : Type)
+--      ^ keyword.other.colon.dhall
+--        ^^^^^^ storage.modifier.universal-quantifier.dhall
+--              ^^^^^^^^^^ meta.parens.dhall
+--              ^ punctuation.section.parens.begin.dhall
+--               ^ variable.parameter.lambda.dhall
+--                 ^ keyword.other.colon.dhall
+--                   ^^^^ storage.type.dhall
+--                       ^ punctuation.section.parens.end.dhall
+--                         ^^ keyword.operator.arrow.dhall
+--                            ^^^^^^ storage.modifier.universal-quantifier.dhall
+--                                  ^^^^^^^^^^ meta.parens.dhall
+--                                  ^ punctuation.section.parens.begin.dhall
+--                                   ^ variable.parameter.lambda.dhall
+--                                     ^ keyword.other.colon.dhall
+--                                       ^^^^ storage.type.dhall
+--                                           ^ punctuation.section.parens.end.dhall
+--                                             ^^ keyword.operator.arrow.dhall
+--                                                ^^^^^^ storage.modifier.universal-quantifier.dhall
+--                                                      ^^^^^^^^^^ meta.parens.dhall
+--                                                      ^ punctuation.section.parens.begin.dhall
+--                                                       ^ variable.parameter.lambda.dhall
+--                                                         ^ keyword.other.colon.dhall
+--                                                           ^^^^ storage.type.dhall
+--                                                               ^ punctuation.section.parens.end.dhall
+        -> (a -> b) -> (b -> c) -> (a -> c)
+--      ^^ keyword.operator.arrow.dhall
+--         ^^^^^^^^ meta.parens.dhall
+--         ^ punctuation.section.parens.begin.dhall
+--          ^ meta.label.dhall
+--            ^^ keyword.operator.arrow.dhall
+--               ^ meta.label.dhall
+--                ^ punctuation.section.parens.end.dhall
+--                  ^^ keyword.operator.arrow.dhall
+--                     ^^^^^^^^ meta.parens.dhall
+--                     ^ punctuation.section.parens.begin.dhall
+--                      ^ meta.label.dhall
+--                        ^^ keyword.operator.arrow.dhall
+--                           ^ meta.label.dhall
+--                            ^ punctuation.section.parens.end.dhall
+--                              ^^ keyword.operator.arrow.dhall
+--                                 ^^^^^^^^ meta.parens.dhall
+--                                 ^ punctuation.section.parens.begin.dhall
+--                                  ^ meta.label.dhall
+--                                    ^^ keyword.operator.arrow.dhall
+--                                       ^ meta.label.dhall
+--                                        ^ punctuation.section.parens.end.dhall
+
+        =  λ(A : Type)   -> λ(B : Type)   -> λ(C : Type)
+--      ^ keyword.operator.assignment.dhall
+--         ^ support.function.lambda.dhall
+--          ^^^^^^^^^^ meta.parens.dhall
+--          ^ punctuation.section.parens.begin.dhall
+--           ^ variable.parameter.lambda.dhall
+--             ^ keyword.other.colon.dhall
+--               ^^^^ storage.type.dhall
+--                   ^ punctuation.section.parens.end.dhall
+--                       ^^ keyword.operator.arrow.dhall
+--                          ^ support.function.lambda.dhall
+--                           ^^^^^^^^^^ meta.parens.dhall
+--                           ^ punctuation.section.parens.begin.dhall
+--                            ^ variable.parameter.lambda.dhall
+--                              ^ keyword.other.colon.dhall
+--                                ^^^^ storage.type.dhall
+--                                    ^ punctuation.section.parens.end.dhall
+--                                        ^^ keyword.operator.arrow.dhall
+--                                           ^ support.function.lambda.dhall
+--                                            ^^^^^^^^^^ meta.parens.dhall
+--                                            ^ punctuation.section.parens.begin.dhall
+--                                             ^ variable.parameter.lambda.dhall
+--                                               ^ keyword.other.colon.dhall
+--                                                 ^^^^ storage.type.dhall
+--                                                     ^ punctuation.section.parens.end.dhall
+        -> λ(f : A -> B) -> λ(g : B -> C) -> λ(x : A)
+--      ^^ keyword.operator.arrow.dhall
+--         ^ support.function.lambda.dhall
+--          ^^^^^^^^^^^^ meta.parens.dhall
+--          ^ punctuation.section.parens.begin.dhall
+--           ^ variable.parameter.lambda.dhall
+--             ^ keyword.other.colon.dhall
+--               ^ meta.label.dhall
+--                 ^^ keyword.operator.arrow.dhall
+--                    ^ meta.label.dhall
+--                     ^ punctuation.section.parens.end.dhall
+--                       ^^ keyword.operator.arrow.dhall
+--                          ^ support.function.lambda.dhall
+--                           ^^^^^^^^^^^^ meta.parens.dhall
+--                           ^ punctuation.section.parens.begin.dhall
+--                            ^ variable.parameter.lambda.dhall
+--                              ^ keyword.other.colon.dhall
+--                                ^ meta.label.dhall
+--                                  ^^ keyword.operator.arrow.dhall
+--                                     ^ meta.label.dhall
+--                                      ^ punctuation.section.parens.end.dhall
+--                                        ^^ keyword.operator.arrow.dhall
+--                                           ^ support.function.lambda.dhall
+--                                            ^^^^^^^ meta.parens.dhall
+--                                            ^ punctuation.section.parens.begin.dhall
+--                                             ^ variable.parameter.lambda.dhall
+--                                               ^ keyword.other.colon.dhall
+--                                                 ^ meta.label.dhall
+--                                                  ^ punctuation.section.parens.end.dhall
+        -> g (f x)
+--      ^^ keyword.operator.arrow.dhall
+--         ^ meta.label.dhall
+--           ^^^^^ meta.parens.dhall
+--           ^ punctuation.section.parens.begin.dhall
+--            ^ meta.label.dhall
+--              ^ meta.label.dhall
+--               ^ punctuation.section.parens.end.dhall
+
+in  let Nesting : Type = < Inline : {} | Nested : Text >
+--  ^^^ keyword.other.let.dhall
+--      ^^^^^^^ entity.name.function.dhall support.function.dhall
+--              ^ keyword.other.colon.dhall
+--                ^^^^ storage.type.dhall
+--                     ^ keyword.operator.assignment.dhall
+--                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.angles.union.dhall
+--                       ^ punctuation.section.angles.begin.union.dhall
+--                         ^^^^^^ string.unquoted.label.dhall entity.name.tag.dhall
+--                                ^ keyword.other.colon.dhall
+--                                  ^^ meta.braces.record.dhall
+--                                  ^ punctuation.section.braces.begin.record.dhall
+--                                   ^ punctuation.section.braces.end.record.dhall
+--                                     ^ punctuation.separator.sequence.union.dhall
+--                                       ^^^^^^ string.unquoted.label.dhall entity.name.tag.dhall
+--                                              ^ keyword.other.colon.dhall
+--                                                ^^^^ storage.type.dhall
+--                                                     ^ punctuation.section.angles.end.union.dhall
+
+in  let Tagged : Type → Type
+--  ^^^ keyword.other.let.dhall
+--      ^^^^^^ entity.name.function.dhall support.function.dhall
+--             ^ keyword.other.colon.dhall
+--               ^^^^ storage.type.dhall
+--                    ^ keyword.operator.arrow.dhall
+--                      ^^^^ storage.type.dhall
+        = λ(a : Type) → {field : Text, nesting : ./Nesting, contents : a}
+--      ^ keyword.operator.assignment.dhall
+--        ^ support.function.lambda.dhall
+--         ^^^^^^^^^^ meta.parens.dhall
+--         ^ punctuation.section.parens.begin.dhall
+--          ^ variable.parameter.lambda.dhall
+--            ^ keyword.other.colon.dhall
+--              ^^^^ storage.type.dhall
+--                  ^ punctuation.section.parens.end.dhall
+--                    ^ keyword.operator.arrow.dhall
+--                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.braces.record.dhall
+--                      ^ punctuation.section.braces.begin.record.dhall
+--                       ^^^^^ string.unquoted.label.dhall entity.name.tag.dhall
+--                             ^ keyword.other.colon.dhall
+--                               ^^^^ storage.type.dhall
+--                                   ^ punctuation.separator.sequence.record.dhall
+--                                     ^^^^^^^ string.unquoted.label.dhall entity.name.tag.dhall
+--                                             ^ keyword.other.colon.dhall
+--                                               ^^^^^^^^^ string.unquoted.file.dhall meta.path.file.dhall
+--                                                        ^ punctuation.separator.sequence.record.dhall
+--                                                          ^^^^^^^^ string.unquoted.label.dhall entity.name.tag.dhall
+--                                                                   ^ keyword.other.colon.dhall
+--                                                                     ^ meta.label.dhall
+--                                                                      ^ punctuation.section.braces.end.record.dhall
+
+in  {=} : {}
+--  ^^^ meta.braces.record.dhall
+--  ^ punctuation.section.braces.begin.record.dhall
+--   ^ keyword.operator.assignment.dhall
+--    ^ punctuation.section.braces.end.record.dhall
+--      ^ keyword.other.colon.dhall
+--        ^^ meta.braces.record.dhall
+--        ^ punctuation.section.braces.begin.record.dhall
+--         ^ punctuation.section.braces.end.record.dhall
