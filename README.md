@@ -4,8 +4,8 @@ Syntax definitions for the [Dhall](https://dhall-lang.org/) configuration langua
 
 Currently two syntax files are provided:
 
-* a file based directly on `https://github.com/SQbQxeKd3JHD8/SublimeDhall`: [./dhall.sublime-syntax](./dhall.sublime-syntax),
-* a file based on [Dhall syntax highlighting for VS Code](https://github.com/dhall-lang/vscode-language-dhall): [./dhall_vscode.sublime-syntax](./dhall_vscode.sublime-syntax),
+* a file based directly on `https://github.com/SQbQxeKd3JHD8/SublimeDhall`: [dhall.sublime-syntax](./dhall.sublime-syntax),
+* a file based on [Dhall syntax highlighting for VS Code](https://github.com/dhall-lang/vscode-language-dhall): [./extras/dhall_vscode.sublime-syntax](extras/dhall_vscode.sublime-syntax),
 
 that may have different set of features (and bugs). Ideally in the future these should be unfied into a single syntax definition. As for now, just use the file that better fits your needs.
 
