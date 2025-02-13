@@ -112,7 +112,7 @@ contexts:
       scope: keyword.control.conditional.dhall
 
   keywords:
-    - match: '\b(?:as|using|missing|constructors|merge)\b'
+    - match: '\b(?:as|using|missing|constructors|merge|toMap|with|showConstructor|assert)\b'
       scope: keyword.other.dhall
 
   let:
