@@ -254,7 +254,7 @@ contexts:
   # Better would be to use the stack as we have done elsewhere in this syntax.
   primitive-url:
     - match:
-        '({{url}})(?:\s*(sha256)(:)({{hex_digit}}{64}))?(?:\s*(as)\s*(Text))?'
+        '({{url}})(?:\s*(sha256)(:)({{hex_digit}}{64}))?(?:\s*(as)\s*(Text|Bytes|Location))?'
       captures:
         1:
           markup.underline.url.dhall string.unquoted.url.dhall
@@ -266,7 +266,7 @@ contexts:
         6: storage.type.dhall
   primitive-file:
     - match:
-        '({{local}})(?:\s*(sha256)(:)({{hex_digit}}{64}))?(?:\s*(as)\s*(Text))?'
+        '({{local}})(?:\s*(sha256)(:)({{hex_digit}}{64}))?(?:\s*(as)\s*(Text|Bytes|Location))?'
       captures:
         1: string.unquoted.file.dhall meta.path.file.dhall
         2: storage.modifier.hash.dhall
@@ -277,7 +277,7 @@ contexts:
   primitive-env:
     - match:
         "(env)(:)({{bash_env_var}})(?:\\s*(sha256)(:)({{hex_digit}}{64}))?\
-         (?:\\s*(as)\\s*(Text))?"
+         (?:\\s*(as)\\s*(Text|Bytes|Location))?"
       captures:
         1: storage.modifier.environment-variable.dhall
         2: punctuation.separator.colon.dhall
@@ -289,7 +289,7 @@ contexts:
         8: storage.type.dhall
     - match:
         "(env)(:)(\")({{posix_env_var}})(\")(?:\\s*(sha256)(:)\
-         ({{hex_digit}}{64}))?(?:\\s*(as)\\s*(Text))?"
+         ({{hex_digit}}{64}))?(?:\\s*(as)\\s*(Text|Bytes|Location))?"
       captures:
         1: storage.modifier.environment-variable.dhall
         2: punctuation.separator.colon.dhall
