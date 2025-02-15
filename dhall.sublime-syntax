@@ -241,6 +241,7 @@ contexts:
       scope: constant.numeric.dhall
 
   primitive:
+    - include: primitive-bytes
     - include: primitive-double
     - include: primitive-natural
     - include: primitive-integer
@@ -315,6 +316,10 @@ contexts:
   primitive-integer:
     - match: '[+-]?{{digit}}+'
       scope: constant.numeric.integer.dhall
+
+  primitive-bytes:
+    - match: '0x"({{hex_digit}}{2})*"'
+      scope: constant.other.dhall
 
   primitive-text:
     - include: primitive-text-double-quote
