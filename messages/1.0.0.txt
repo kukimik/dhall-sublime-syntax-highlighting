@@ -1,0 +1,38 @@
+The Dhall syntax highlighting package has been re-released after approximately 5 years. In 2020 the original package, authored by Lawrence Bell, was removed from GitHub. Fortunately a copy of the `.sublime-syntax` file was preserved by one of the users. Under the original author's permission the file was republished in 2025 under the MIT license and is now maintained by Michał Kukieła.
+
+If you happen to have a copy the original package in its entirety, please contact the new maintainer via a github issue (currently I only have the original .sublime-syntax file, and I am not even sure if it is the latest published version).
+
+Compared to the 0.1.0 version the present 1.0.0 version:
+
+* removes the `Dhall: Format (Pretty Print) Dhall` command (I don't have the original code for this, and anyway this should rather be done via LSP);
+* adds syntax highlighting for:
+
+  + built-in functions, types and constants:
+    - Natural/subtract,
+    - Integer/{negate,clamp},
+    - Text/{show,replace},
+    - Date/show,
+    - Time/show,
+    - TimeZone/show,
+    - Date,
+    - Time,
+    - TimeZone,
+    - Bytes,
+    - Sort,
+    - None,
+    - Some,
+    - Infinity,
+    - NaN,
+  + keywords:
+    - toMap,
+    - with,
+    - showConstructor,
+    - assert,
+  + operators:
+    - ≡ and ===,
+  + Bytes literals,
+  + 'as Bytes' and 'as Location' modes in imports.
+
+* has a new test suite (the old one is missing, but it was partially reconstructed from https://github.com/dhall-lang/vscode-language-dhall)
+* an alternative syntax highlighting definition converted from the VSCode Dhall plugin
+
