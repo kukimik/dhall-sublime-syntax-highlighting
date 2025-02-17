@@ -243,8 +243,8 @@ contexts:
   primitive:
     - include: primitive-bytes
     - include: primitive-double
-    - include: primitive-natural
     - include: primitive-integer
+    - include: primitive-natural
     - include: primitive-url
     - include: primitive-file
     - include: primitive-env
@@ -310,12 +310,20 @@ contexts:
       scope: constant.numeric.float.dhall
 
   primitive-natural:
-    - match: '{{digit}}+'
-      scope: constant.numeric.natural.dhall
+    - match: '0x{{hex_digit}}+'
+      scope: constant.numeric.natural.hexadecimal.dhall
+    - match: '0b[01]+'
+      scope: constant.numeric.natural.binary.dhall
+    - match: '[1-9]{{digit}}*|0'
+      scope: constant.numeric.natural.decimal.dhall
 
   primitive-integer:
-    - match: '[+-]?{{digit}}+'
-      scope: constant.numeric.integer.dhall
+    - match: '[+-]0x{{hex_digit}}+'
+      scope: constant.numeric.integer.hexadecimal.dhall
+    - match: '[+-]0b[01]+'
+      scope: constant.numeric.integer.binary.dhall
+    - match: '[+-]([1-9]{{digit}}*|0)'
+      scope: constant.numeric.integer.decimal.dhall
 
   primitive-bytes:
     - match: '0x"({{hex_digit}}{2})*"'
