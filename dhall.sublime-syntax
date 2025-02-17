@@ -327,7 +327,7 @@ contexts:
 
   primitive-bytes:
     - match: '0x"({{hex_digit}}{2})*"'
-      scope: constant.other.dhall
+      scope: constant.other.bytes.dhall
 
   primitive-text:
     - include: primitive-text-double-quote
