@@ -9,9 +9,9 @@ Currently two syntax files are provided:
 
 that may have different set of features (and bugs). Ideally in the future these should be unfied into a single syntax definition. As for now, just use the file that better fits your needs.
 
-## Can this be installed using Package Contol?
+## Installation
 
-Not yet. But it is going to replace the [Dhall package](https://packagecontrol.io/packages/Dhall), which is no longer available.
+The recommended way to install the package is via [Package Control](https://packagecontrol.io/). After [installing Package Control](https://packagecontrol.io/installation) follow the [usage guide](https://packagecontrol.io/docs/usage) to install the package named `Dhall` from the default channel.
 
 ## Authorship and licensing
 
