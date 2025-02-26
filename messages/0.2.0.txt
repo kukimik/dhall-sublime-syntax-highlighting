@@ -4,7 +4,7 @@ If you happen to have a copy the original package in its entirety, please contac
 
 Compared to the 0.1.0 version, the present 0.2.0 version most notably:
 
-- removes the `Dhall: Format (Pretty Print) Dhall` command (I don't have the original code for this, and anyway this should rather be done via the LSP);
+- removes the `Dhall: Format (Pretty Print) Dhall` command (I don't have the original code for this, please check the [Fmt](https://packagecontrol.io/packages/Fmt) plugin for an alternative solution);
 - adds support for a few recent additions to the language (a number of keywords, built-in types and functions, the equivalence operator, hexadecimal and binary integer and natural literals);
 - contains an alternative syntax highlighting definition converted from the VS Code Dhall plugin;
 - includes a Comments.tmPreferences file used by the 'Toggle Comment' and 'Toggle Block Comment' commands (such a file might have been available in the 0.1.0 version, but I am not aware of it and it has been created from scratch).
