@@ -9,13 +9,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Added
 
 - `.gitignore` file.
+- `.gitattributes` file, setting the `export-ignore` attribute for tests, git config files and GitHub actions settings.
 
 ## [0.2.0] - 2025-02-24
 
 ### Added
 
-- Syntax highlighting of built-in functions, types and constants:
-  - `Natural/subtract`,
+- Syntax highlighting of builtnstants:
+  - `Natural/' config filessubtract`,
   - `Integer/{negate,clamp}`,
   - `Text/{show,replace}`,
   - `Date/show`,
