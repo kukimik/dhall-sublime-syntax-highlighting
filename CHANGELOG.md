@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.2.1] - 2025-02-28
+
 ### Added
 
 - `.gitignore` file.
@@ -62,5 +64,6 @@ A release authored by Lawerence Bell, no longer available.
 Sublime Text syntax highlighting for the Dhall language. It also provided a command Dhall: Format (Pretty Print) Dhall which ran `dhall-format` on a given Dhall file.
 
 
-[Unreleased]: https://github.com/kukimik/dhall-sublime-syntax-highlighting/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/kukimik/dhall-sublime-syntax-highlighting/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/kukimik/dhall-sublime-syntax-highlighting/releases/tag/v0.2.1
 [0.2.0]: https://github.com/kukimik/dhall-sublime-syntax-highlighting/releases/tag/v0.2.0
