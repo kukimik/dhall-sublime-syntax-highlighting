@@ -1,0 +1,3 @@
+*.sublime-project
+*.sublime-workspace
+convert_syntax.py

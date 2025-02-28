@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-<!-- ## [Unreleased] -->
+## [Unreleased]
+
+### Added
+
+- `.gitignore` file.
 
 ## [0.2.0] - 2025-02-24
 
@@ -57,5 +61,5 @@ A release authored by Lawerence Bell, no longer available.
 Sublime Text syntax highlighting for the Dhall language. It also provided a command Dhall: Format (Pretty Print) Dhall which ran `dhall-format` on a given Dhall file.
 
 
-<!--[Unreleased]: https://github.com/kukimik/dhall-sublime-syntax-highlighting/compare/v0.2.0...HEAD-->
+[Unreleased]: https://github.com/kukimik/dhall-sublime-syntax-highlighting/compare/v0.2.0...HEAD
 [0.2.0]: https://github.com/kukimik/dhall-sublime-syntax-highlighting/releases/tag/v0.2.0
