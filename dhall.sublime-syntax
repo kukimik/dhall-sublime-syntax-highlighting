@@ -163,12 +163,6 @@ contexts:
       pop: true
     - include: make-optional-with-error
 
-  colon:
-    - match: ':'
-      scope: keyword.other.colon.dhall
-      pop: true
-    - include: make-optional-with-error
-
   for-all:
     - match: '(?:\bforall\b|∀)'
       scope: storage.modifier.universal-quantifier.dhall
