@@ -300,27 +300,27 @@ contexts:
         10: storage.type.dhall
 
   primitive-double:
-    - match: '[+-]?{{digit}}+(?:(\.){{digit}}+{{exponent}}?|{{exponent}})'
+    - match: '[+-]?{{digit}}+(?:(\.){{digit}}+{{exponent}}?|{{exponent}})\b'
       scope: constant.numeric.float.dhall
 
   primitive-natural:
-    - match: '0x{{hex_digit}}+'
+    - match: '\b0x{{hex_digit}}+\b'
       scope: constant.numeric.natural.hexadecimal.dhall
-    - match: '0b[01]+'
+    - match: '\b0b[01]+\b'
       scope: constant.numeric.natural.binary.dhall
-    - match: '[1-9]{{digit}}*|0'
+    - match: '\b(?:[1-9]{{digit}}*|0)\b'
       scope: constant.numeric.natural.decimal.dhall
 
   primitive-integer:
-    - match: '[+-]0x{{hex_digit}}+'
+    - match: '[+-]0x{{hex_digit}}+\b'
       scope: constant.numeric.integer.hexadecimal.dhall
-    - match: '[+-]0b[01]+'
+    - match: '[+-]0b[01]+\b'
       scope: constant.numeric.integer.binary.dhall
-    - match: '[+-]([1-9]{{digit}}*|0)'
+    - match: '[+-](?:[1-9]{{digit}}*|0)\b'
       scope: constant.numeric.integer.decimal.dhall
 
   primitive-bytes:
-    - match: '0x"({{hex_digit}}{2})*"'
+    - match: '\b0x"({{hex_digit}}{2})*"'
       scope: constant.other.bytes.dhall
 
   primitive-text:
