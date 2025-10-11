@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Updated URL highlighting to match current version of Dhall; most notably we drop support for URL fragments.
 - Require `Double`, `Natural`, `Integer` and `Bytes` literals to start and/or end at word boundaries.
 
 ### Removed

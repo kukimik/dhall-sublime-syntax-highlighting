@@ -7,46 +7,42 @@ scope: source.dhall
 variables:
   alpha: '[a-zA-Z]'
   digit: '[0-9]'
-  hex_digit: '(?:{{digit}}|[a-fA-F])'
-  simple_label: '(?:{{alpha}}|_)(?:{{alpha}}|{{digit}}|[-/_])*'
-  quoted_label: '(?:{{alpha}}|{{digit}}|[-/_:\.])+'
+  alphanum: '[a-zA-Z0-9]'
+  hex_digit: '[a-fA-F0-9]'
+  simple_label: '(?:{{alpha}}|_)(?:{{alphanum}}|[-/_])*'
+  quoted_label: '(?:{{alphanum}}|[-/_:\.])+'
   exponent: '(?:e[+-]?{{digit}}+)'
+  # imports: local files
   path_character: '[^\s#/\\/,<>\?\(\)\[\]\{\}]'
   path_component: '(?:/{{path_character}}+)'
   directory: '(?:{{path_component}}*)'
   file: '{{path_component}}'
   local: '(?:(?:\.\.?|~)?{{directory}}{{file}})'
-  scheme: '(?:https?)'
-  url:
-    "(?:{{scheme}}://{{authority}}{{directory}}{{file}}(?:\\?{{query}})?\
-     (?:#{{fragment}})?)"
-  authority: '(?:(?:{{userinfo}}@)?{{host}}(?::{{port}})?)'
-  userinfo: '(?:(?:{{unreserved}}|{{pct_encoded}}|{{sub_delims}}|:)*)'
-  host: '(?:{{IP_literal}}|{{IPv4address}}|{{reg_name}})'
-  port: '(?:{{digit}}*)'
-  IP_literal: '(?:\[(?:{{IPv6address}}|{{IPvFuture}})\])'
-  IPvFuture: '(?:v{{hex_digit}}+\.(?:{{unreserved}}|{{sub_delims}}|:)+)'
-  IPv6address:
-    "(?:(?:{{h16}}:){6}{{ls32}}|::(?:{{h16}}:){5}{{ls32}}|(?:{{h16}})?::\
-     (?:{{h16}}:){4}{{ls32}}|(?:(?:{{h16}}:){1,}{{h16}})?::(?:{{h16}}:){3}\
-     {{ls32}}|(?:(?:{{h16}}:){2,}{{h16}})?::(?:{{h16}}:){2}{{ls32}}|\
-     (?:(?:{{h16}}:){3,}{{h16}})?::(?:{{h16}}:){1}{{ls32}}|(?:(?:{{h16}}:){4,}\
-     {{h16}})?::{{ls32}}|(?:(?:{{h16}}:){5,}{{h16}})?::{{h16}}|(?:(?:{{h16}}:)\
-     {6,}{{h16}})?::)"
-  h16: '(?:{{hex_digit}}{1,4})'
-  ls32: '(?:{{h16}}:{{h16}}|{{IPv4address}})'
-  IPv4address: '(?:{{dec_octet}}\.{{dec_octet}}\.{{dec_octet}}\.{{dec_octet}})'
-  dec_octet:
-    '(?:25[0-5]|2[0-4]{{digit}}|1{{digit}}{2}|[1-9]{{digit}}|{{digit}})'
-  reg_name: '(?:(?:{{unreserved}}|{{pct_encoded}}|{{sub_delims}})*)'
+  # imports: urls
+  unreserved: '(?:{{alphanum}}|[\-._~])'
+  pct_encoded: '%{{hex_digit}}{2}'
+  sub_delims: '[!\$&''\*\+;=]'
+  userinfo: '(?:{{unreserved}}|{{pct_encoded}}|{{sub_delims}}|:)*'
+  h16: '{{hex_digit}}{1,4}'
+  dec_octet: '(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])'
+  ipv4address: '{{dec_octet}}\.{{dec_octet}}\.{{dec_octet}}\.{{dec_octet}}'
+  ls32: '(?:{{h16}}:{{h16}}|{{ipv4address}})'
+  ipv6address: "(?:(?:{{h16}}:){6}{{ls32}}|::(?:{{h16}}:){5}{{ls32}}|(?:{{h16}})?::(?:{{h16}}:){4}{{ls32}}|(?:{{h16}}(?::{{h16}})?)?::(?:{{h16}}:){3}{{ls32}}|(?:{{h16}}(?::{{h16}}){,2})?::(?:{{h16}}:){2}{{ls32}}|(?:{{h16}}(?::{{h16}}){,3})?::{{h16}}:{{ls32}}|(?:{{h16}}(?::{{h16}}){,4})?::{{ls32}}|(?:{{h16}}(?::{{h16}}){,5})?::{{h16}}|(?:{{h16}}(?::{{h16}}){,6})?::)"
+  ipvfuture: '[vV]{{hex_digit}}+\.(?:{{unreserved}}|{{sub_delims}}|:)+'
+  ip_literal: '\[(?:{{ipv6address}}|{{ipvfuture}})\]'
+  domainlabel: '(?:{{alphanum}})+(?:(?:-)+(?:{{alphanum}})+)*'
+  domain: '{{domainlabel}}(?:\.{{domainlabel}})*(?:\.)?'
+  host: '(?:{{ip_literal}}|{{ipv4address}}|{{domain}})'
+  port: '{{digit}}*'
+  authority: '(?:{{userinfo}}@)?{{host}}(?::{{port}})?'
+  scheme: 'https?'
   pchar: '(?:{{unreserved}}|{{pct_encoded}}|{{sub_delims}}|[:@])'
-  query: '(?:(?:{{pchar}}|[/?])*)'
-  fragment: '{{query}}'
-  pct_encoded: '(?:%{{hex_digit}}{2})'
-  unreserved: '(?:{{alpha}}|{{digit}}|[-\._~])'
-  sub_delims: '[!\$&''\(\)\*\+,;=]'
-  # env: '(?:env:(?:{{bash_env_var}}|"{{posix_env_var}}"))'
-  bash_env_var: '(?:(?:{{alpha}}|_)(?:{{alpha}}|{{digit}}|_)*)'
+  segment: '(?:{{pchar}})*'
+  path_abempty: '(?:/{{segment}})*'
+  query: '(?:{{pchar}}|[/?])*'
+  http_raw: '{{scheme}}://{{authority}}{{path_abempty}}(?:\?{{query}})?'
+  # imports: env variables
+  bash_env_var: '(?:(?:{{alpha}}|_)(?:{{alphanum}}|_)*)'
   posix_env_var: '(?:{{posix_env_var_char}}+)'
   posix_env_var_char: '(?:\\["\\abfnrtv]|[^"\\=])'
 
@@ -251,7 +247,7 @@ contexts:
   # Better would be to use the stack as we have done elsewhere in this syntax.
   primitive-url:
     - match:
-        '({{url}})(?:\s*(sha256)(:)({{hex_digit}}{64}))?(?:\s*(as)\s*(Text|Bytes|Location))?'
+        '({{http_raw}})(?:\s*(sha256)(:)({{hex_digit}}{64}))?(?:\s*(as)\s*(Text|Bytes|Location))?'
       captures:
         1:
           markup.underline.url.dhall string.unquoted.url.dhall
