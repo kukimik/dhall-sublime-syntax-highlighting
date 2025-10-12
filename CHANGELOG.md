@@ -26,8 +26,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
-- Syntax highlighting of builtnstants:
-  - `Natural/' config filessubtract`,
+- Syntax highlighting of built-in functions, types and constants:
+  - `Natural/subtract`,
   - `Integer/{negate,clamp}`,
   - `Text/{show,replace}`,
   - `Date/show`,
