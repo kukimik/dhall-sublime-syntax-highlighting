@@ -5,7 +5,6 @@
 --        ^^^^ constant.other.bytes.dhall
 --              ^^^^^^^^^^^^^^^^^^^^ constant.other.bytes.dhall
 ,naturals = [0, 10, 1234567890, 0b0, 0b1, 0b1010111, 0x0, 0xA, 0xb, 0x0000, 0xaBcDeF0123456789]
---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.braces.record.dhall
 --           ^ constant.numeric.natural.decimal.dhall
 --              ^^ constant.numeric.natural.decimal.dhall
 --                  ^^^^^^^^^^ constant.numeric.natural.decimal.dhall
